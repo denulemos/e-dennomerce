@@ -1,5 +1,7 @@
 # E-Denommerce
 
+-- WORK IN PROGRESS -- 
+
 E-commerce app called E-Denommerce made with React Native, Expo, MongoDB, Node, Strapi and Stripe.
 
 ## App Features

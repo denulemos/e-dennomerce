@@ -2,10 +2,10 @@ import { StyleSheet } from 'react-native';
 
 const AuthScreenStyle = StyleSheet.create({
     logo : {
-        width: 200,
-        height: 200,
+        width: 300,
+        height: 300,
         resizeMode: 'contain',
-        marginBottom: 20,
+        alignSelf: 'center',
     }
 })
 

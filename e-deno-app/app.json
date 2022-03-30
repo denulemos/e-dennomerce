@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "e-denommerce-app",
-    "slug": "e-denommerce-app",
+    "name": "e-deno-app",
+    "slug": "e-deno-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

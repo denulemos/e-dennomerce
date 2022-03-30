@@ -1,4 +1,6 @@
 # E-Denommerce
+![image](https://user-images.githubusercontent.com/83657013/160730830-d4e79124-56a3-45ca-90b8-77cd62c8e5b4.png)
+
 
 -- WORK IN PROGRESS -- 
 

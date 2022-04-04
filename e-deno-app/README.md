@@ -7,4 +7,10 @@
 * First of all, you must do `yarn install`
 * `yarn ios` execute for iOS
 * `yarn android` execute for Android
-* Execute with tunnel `npm run tunnel`
+
+Both commands run with NPM too
+
+### Tools
+
+* React Native for the general development
+* Formik for Form Manipulation

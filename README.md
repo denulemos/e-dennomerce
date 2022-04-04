@@ -15,5 +15,5 @@ E-commerce app called E-Denommerce made with React Native, Expo, MongoDB, Node, 
 
 ## Files
 
-* `e-denommerce-app`: React Native Client
-* `server`: Backend server
+* `e-deno-app`: React Native Client
+* `e-deno`: Backend server

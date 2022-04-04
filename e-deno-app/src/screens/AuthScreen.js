@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import { Text, View, Image, KeyboardAvoidingView } from 'react-native';
 
-import SignIn from '../components/Auth/SignIn';
-import Login from '../components/Auth/Login';
+import SignIn from '../components/Auth/signIn';
+import Login from '../components/Auth/login';
 import logo from '../../assets/logo.png';
 import {LayoutStyles} from '../styles';
 import AuthScreenStyle from './AuthScreenStyle';

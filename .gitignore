@@ -1,4 +1,4 @@
-e-deno-app/node_modules
-e-deno-app/.expo
-e-deno-app/yarn.lock
-e-deno-app/.expo-shared
+*/node_modules
+*/.expo
+*/yarn.lock
+*/.expo-shared

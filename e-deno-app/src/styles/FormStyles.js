@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import Colors from './Colors';
+import Colors from './colors';
 
 const FormStyles = StyleSheet.create({
     input: {
@@ -14,6 +14,9 @@ const FormStyles = StyleSheet.create({
     },
     btnTextLabel: {
         color: Colors.bluePrimary,
+    },
+    formContainer : {
+        marginBottom: 20
     }
 })
 

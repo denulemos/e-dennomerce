@@ -13,4 +13,4 @@ Both commands run with NPM too
 ### Tools
 
 * React Native for the general development
-* Formik for Form Manipulation
+* Strapi for user administration

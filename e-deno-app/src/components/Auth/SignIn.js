@@ -1,32 +1,89 @@
-import React from 'react'
-import {TextInput, Button} from 'react-native-paper'
-import {View} from 'react-native';
-import {useFormik} from 'formik';
-import * as Yup from 'yup';
-import { FormStyles } from '../../styles';
+import React, {useState} from "react";
+import { TextInput, Button } from "react-native-paper";
+import { ToastAndroid, View } from "react-native";
+import Toast from 'react-native-root-toast';
 
-import SignInInitial from './initialValues/SignInInitial';
+import SignInInitial from "./validations/signInInitial";
+import ValidationSchema from './validations/validationSchema';
+import {registerUser} from '../../api/user';
 
-const SignIn = ({changeForm}) => {
+import { FormStyles } from "../../styles";
 
-    const formik = useFormik({
-        initialValues: SignInInitial(),
-        onSubmit: (formData) => {
-            console.log(formData);
-        },
-    })
+const SignIn = ({ changeForm }) => {
 
-    return (
-        <View>  
-            <TextInput onChangeText={(value) => formik.setFieldValue("email", value)} label="Email" style={FormStyles.input}/>
-            <TextInput onChangeText={(value) => formik.setFieldValue("username", value)} label="Username" style={FormStyles.input}/>
-            <TextInput onChangeText={(value) => formik.setFieldValue("password", value)} label="Password" style={FormStyles.input} secureTextEntry/>
-            <TextInput onChangeText={(value) => formik.setFieldValue("confirmPassword", value)} label="Confirm Password" style={FormStyles.input} secureTextEntry/>
+    const [form, setForm] = useState(SignInInitial);
+    const [loading, setLoading] = useState(false);
 
-            <Button onPress={formik.handleSubmit} mode="contained" style={FormStyles.btnSuccess}>Sign In!</Button>
-            <Button onPress={changeForm} mode="text" labelStyle={FormStyles.btnTextLabel} style={FormStyles.btnText}>I already have an Account</Button>
-        </View>
-    )
-}
+    const validateFields = async() => {
+        setLoading(true);
+        const valid = ValidationSchema(form);
+        if (valid.isCorrect) {
+            try {
+              const result = await registerUser(form);
+              changeForm();
+            }
+            catch(e) {
+              Toast.show(e.message, {
+                position: Toast.positions.CENTER,
+              });
+              setLoading(false);
+            }
+        }
+        else {
+          Toast.show(valid.message, {
+            position: Toast.positions.CENTER,
+          });
+          setLoading(false);
+        }
+    }
 
-export default SignIn
+  return (
+    <View style={FormStyles.formContainer}>
+      <TextInput
+        value={form.email}
+        onChangeText={(value) => setForm({ ...form, email: value })}
+        label="Email"
+        style={FormStyles.input}
+      />
+      <TextInput
+        value={form.username}
+        onChangeText={(value) => setForm({ ...form, username: value })}
+        label="Username"
+        style={FormStyles.input}
+      />
+      <TextInput
+        value={form.password}
+        onChangeText={(value) => setForm({ ...form, password: value })}
+        label="Password"
+        style={FormStyles.input}
+        secureTextEntry
+      />
+      <TextInput
+        value={form.confirmPassword}
+        onChangeText={(value) => setForm({ ...form, confirmPassword: value })}
+        label="Confirm Password"
+        style={FormStyles.input}
+        secureTextEntry
+      />
+
+      <Button
+        onPress={validateFields}
+        mode="contained"
+        loading={loading}
+        style={FormStyles.btnSuccess}
+      >
+        Sign In!
+      </Button>
+      <Button
+        onPress={changeForm}
+        mode="text"
+        labelStyle={FormStyles.btnTextLabel}
+        style={FormStyles.btnText}
+      >
+        I already have an Account
+      </Button>
+    </View>
+  );
+};
+
+export default SignIn;

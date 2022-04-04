@@ -8,7 +8,8 @@ import {LayoutStyles} from '../styles';
 import AuthScreenStyle from './AuthScreenStyle';
 
 const AuthScreen = () => {
-    const [showLogin, setShowLogin] = useState(false);
+    const [showLogin, setShowLogin] = useState(true);
+    
     // if it is ios, adjust the padding, if it is android, adjust the height
     const identifyPlatform =  Platform.OS === 'ios' ? "padding" : "height"
 
